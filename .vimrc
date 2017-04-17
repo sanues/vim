@@ -1,4 +1,4 @@
-" .vimrc file modified by Dan Sheffner
+" .vimrc file modified by Sanu Subramanian
 
 " Lots of credit to:
 " Sample .vimrc file by Martin Brochhaus
@@ -226,3 +226,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Same, but also show tabs and trailing spaces.
+:set list listchars=tab:>-,trail:.,precedes:<,extends:>
+if version >= 702
+  autocmd BufWinLeave * call clearmatches()
+endif
