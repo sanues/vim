@@ -13,7 +13,9 @@ autocmd! bufwritepost .vimrc source %
 autocmd BufWritePre * %s/\s\+$//e
 
 " map ctrl n to line numbers
-:nmap <C-N><C-N> :set invnumber<CR>
+":nmap <C-N><C-N> :set invnumber<CR>
+
+nmap <silent> <C-N><C-N> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 
 " Mouse and backspace
 " set mouse=a " on OSX press ALT and click
