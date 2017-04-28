@@ -14,7 +14,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " map ctrl n to line numbers
 ":nmap <C-N><C-N> :set invnumber<CR>
-
+set rnu
 nmap <silent> <C-N><C-N> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 
 " Mouse and backspace
@@ -62,10 +62,6 @@ vnoremap <Leader>s :sort<CR>
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
 
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
@@ -193,10 +189,10 @@ set clipboard=unnamedplus
 
 " load up the nerd tree
 autocmd vimenter * NERDTree
-map <Leader>t <plug>NERDTreeTabsToggle<CR>
+map <Leader>t :NERDTreeToggle<CR>
 
 " move nerdtree to the right
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 " " move to the first buffer
 autocmd VimEnter * wincmd p
 
@@ -229,8 +225,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Same, but also show tabs and trailing spaces.
-:set list listchars=tab:>-,trail:.,precedes:<,extends:>
+" To show tabs and trailing spaces.
+:set list listchars=tab:..,trail:.,precedes:<,extends:>
 if version >= 702
   autocmd BufWinLeave * call clearmatches()
 endif
